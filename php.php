@@ -12,11 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $total = $valorCompra;
         $mensagem = "Olá $nome, sua compra de R$ $valorCompra foi realizada com cartão de crédito. Não há desconto. Valor total: R$".$total;
     } elseif ($formaPagamento == "boleto") {
-        $desconto = $valorCompra * 0.08; // corrigido: 8% para boleto
+        $desconto = number_format($valorCompra * 0.08, 2); // corrigido: 8% para boleto
         $total = number_format(($valorCompra - $desconto), 2, ',', '.');
         $mensagem = "Olá $nome, sua compra de R$ $valorCompra foi realizada com boleto. Seu desconto é de R$ $desconto. Valor total: R$".$total;
     } elseif ($formaPagamento == "deposito") {
-        $desconto = $valorCompra * 0.1; // corrigido: 10% para depósito
+        $desconto = number_format($valorCompra * 0.1); // corrigido: 10% para depósito
         $total = number_format(($valorCompra - $desconto), 2, ',', '.');
         $mensagem = "Olá $nome, sua compra de R$ $valorCompra foi realizada com depósito. Seu desconto é de R$ $desconto. Valor total: R$".$total;
     } else {
